@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <table>
+<x-layouts.app>
+<table border="1">
     <tr>
-      <td>Nama</td>
-      <td>NIM</td>
-      <td>Jenis Kelamin</td>
+      <th>Nama</th>
+      <th>NIM</th>
+      <th>Jenis Kelamin</th>
+      <th>Aksi</th>
     </tr>
     @foreach ($students as $student)
         <tr>
           <td> {{$student->nama}} </td>
           <td> {{$student->nim}} </td>
           <td> {{$student->jenis_kelamin}} </td>
+          <td>
+            <a href="#">Detail | </a>
+            <a href="#">Edit | </a>
+            <a href="#">Hapus</a>
+          </td>
         </tr>
     @endforeach
-    
   </table>
-</body>
-</html>
+</x-layouts.app>
+
+
