@@ -30,5 +30,33 @@ class StudentController extends Controller
         Student::create($student);
         return redirect()->route('student-list')->with('success', 'Data mahasiswa berhasil ditambah');
     }
+
+    public function show(String $id){
+        $student = Student::findOrFail($id);
+        return view('students.show', compact('student'));
+    }
+
+    public function edit(Student $student){
+        return view('students.edit', compact('student'));
+    }
+
+    public function update(Request $request, Student $student){
+        $data = $request->validate([
+            'nama' => 'required',
+            'nim' => 'required|numeric',
+            'jenis_kelamin' => 'required',
+        ]);
+
+        $student->update($data);
+        
+        return redirect()->route('student-list')->with('success', 'Data mahasiswa berhasil diubah');
+    }
+
+    public function destroy(Student $student){
+
+        $student->delete();
+        
+        return redirect()->route('student-list')->with('success', 'Data mahasiswa berhasil dihapus');
+    }
 }
     
